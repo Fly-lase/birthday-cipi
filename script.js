@@ -1,77 +1,50 @@
-// AUTOPLAY MUSIC
-window.addEventListener("load", function(){
-    const music = document.getElementById("music");
+// Confetti
+function createConfetti() {
+    const confettiContainer = document.createElement('div');
+    confettiContainer.style.position = 'fixed';
+    confettiContainer.style.top = '0';
+    confettiContainer.style.left = '0';
+    confettiContainer.style.width = '100%';
+    confettiContainer.style.height = '100%';
+    confettiContainer.style.pointerEvents = 'none';
+    confettiContainer.style.zIndex = '1000';
+    document.body.appendChild(confettiContainer);
 
-    // coba mainkan autoplay (muted dulu)
-    music.muted = true;
-    music.play().then(()=>{
-        music.muted = false;
-    }).catch(()=>{
-        document.addEventListener("click",()=>{ music.play(); }, {once:true});
-    });
-});
+    const colors = ['#ff0', '#ff1493', '#00ffff', '#00ff00', '#ff6600', '#fff', '#ff69b4'];
+    
+    for (let i = 0; i < 150; i++) {
+        const confetti = document.createElement('div');
+        confetti.style.position = 'absolute';
+        confetti.style.width = Math.random() * 8 + 4 + 'px';
+        confetti.style.height = Math.random() * 8 + 4 + 'px';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.top = '-10px';
+        confetti.style.opacity = Math.random();
+        confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+        confettiContainer.appendChild(confetti);
 
-// COUNTDOWN
-let num = 3;
-let timer = setInterval(()=>{
-    document.getElementById("count").innerText = num;
-    num--;
-    if(num < 0){
-        clearInterval(timer);
-        document.getElementById("countPage").style.display = "none";
-        showText();
+        const fallDuration = Math.random() * 3 + 2; // 2-5 detik
+        confetti.animate([
+            { transform: `translateY(0px) rotate(0deg)` },
+            { transform: `translateY(100vh) rotate(${Math.random()*720}deg)` }
+        ], {
+            duration: fallDuration * 1000,
+            iterations: 1,
+            easing: 'linear'
+        });
+
+        setTimeout(() => confetti.remove(), fallDuration * 1000);
     }
-},1000);
 
-// SHOW TEXT & CARTOON
-function showText(){
-    const text = document.getElementById("birthdayText");
-    const page = document.getElementById("textPage");
-    const cartoon = document.getElementById("cartoon");
-
-    page.style.display = "flex";
-    text.innerText = "Happy Birthday";
-
-    setTimeout(()=>{ text.innerText="Cipi ❤️"; },2000);
-    setTimeout(()=>{ cartoon.classList.remove("hidden"); },3500);
-    setTimeout(()=>{
-        page.style.display="none";
-        document.getElementById("bookPage").style.display="block";
-    },6000);
+    // Hapus container setelah semua confetti hilang
+    setTimeout(() => confettiContainer.remove(), 6000);
 }
 
-// BOOK FLIP
-let pages = document.querySelectorAll(".page");
-let current = 0;
-
-document.addEventListener("click",function(){
-    if(current < pages.length - 1){
-        pages[current].classList.remove("active");
-        current++;
-        pages[current].classList.add("active");
-    } else {
-        document.getElementById("bookPage").style.display="none";
-        document.getElementById("finalPage").style.display="block";
-    }
-});
-
-// FALLING HEARTS
-setInterval(function(){
-    const love = document.createElement("div");
-    love.classList.add("love");
-    love.innerText="❤";
-    love.style.left = Math.random()*100+"vw";
-    love.style.animationDuration = Math.random()*3+2+"s";
-    document.body.appendChild(love);
-    setTimeout(()=>{ love.remove(); },5000);
-},300);
-
-// SPARKLES
-for(let i=0;i<50;i++){
-    const sparkle = document.createElement("div");
-    sparkle.classList.add("sparkle");
-    sparkle.style.left = Math.random()*100+"vw";
-    sparkle.style.top = Math.random()*100+"vh";
-    sparkle.style.animationDelay = Math.random()*2+"s";
-    document.body.appendChild(sparkle);
+// Panggil confetti bersamaan dengan fireworks
+function showCelebration() {
+    bookSection.style.display = 'none';
+    celebrationSection.style.display = 'flex';
+    createFireworks();
+    createConfetti();
 }
