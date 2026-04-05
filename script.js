@@ -1,5 +1,3 @@
-/* MUSIC */
-
 window.addEventListener("load",function(){
 
 const music=document.getElementById("music")
@@ -14,9 +12,6 @@ music.play()
 
 })
 
-
-
-/* COUNTDOWN */
 
 let num=3
 
@@ -39,8 +34,6 @@ showText()
 },1000)
 
 
-
-/* TEXT */
 
 function showText(){
 
@@ -69,8 +62,6 @@ document.getElementById("bookPage").style.display="block"
 
 
 
-/* BOOK */
-
 let pages=document.querySelectorAll(".page")
 let current=0
 
@@ -94,8 +85,6 @@ document.getElementById("finalPage").style.display="block"
 
 
 
-/* LOVE JATUH */
-
 setInterval(function(){
 
 const love=document.createElement("div")
@@ -117,8 +106,6 @@ love.remove()
 },300)
 
 
-
-/* SPARKLES */
 
 for(let i=0;i<50;i++){
 
