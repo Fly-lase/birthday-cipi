@@ -1,29 +1,14 @@
-window.addEventListener("load",function(){
+let count=3
 
-const music=document.getElementById("music")
+const countText=document.getElementById("count")
 
-music.play().catch(()=>{
+const interval=setInterval(()=>{
 
-document.addEventListener("click",()=>{
-music.play()
-},{once:true})
+count--
 
-})
+if(count===0){
 
-})
-
-
-let num=3
-
-let timer=setInterval(function(){
-
-document.getElementById("count").innerText=num
-
-num--
-
-if(num<0){
-
-clearInterval(timer)
+clearInterval(interval)
 
 document.getElementById("countPage").style.display="none"
 
@@ -31,94 +16,99 @@ showText()
 
 }
 
-},1000)
+countText.innerText=count
 
+},1000)
 
 
 function showText(){
 
-let text=document.getElementById("birthdayText")
-let page=document.getElementById("textPage")
-let cartoon=document.getElementById("cartoon")
+const page=document.getElementById("textPage")
 
-page.style.display="flex"
-
-text.innerText="Happy Birthday"
+page.classList.remove("hidden")
 
 setTimeout(()=>{
-text.innerText="Cipi ❤️"
+
+document.getElementById("cipiText").classList.remove("hidden")
+
 },2000)
 
 setTimeout(()=>{
-cartoon.classList.remove("hidden")
-},3500)
+
+document.getElementById("cartoon").classList.remove("hidden")
+
+},4000)
 
 setTimeout(()=>{
+
 page.style.display="none"
-document.getElementById("bookPage").style.display="block"
-},6000)
+
+document.getElementById("bookPage").classList.remove("hidden")
+
+},7000)
 
 }
 
 
-
-let pages=document.querySelectorAll(".page")
-let current=0
-
-document.addEventListener("click",function(){
-
-if(current<pages.length-1){
-
-pages[current].classList.remove("active")
-current++
-
-pages[current].classList.add("active")
-
-}else{
-
-document.getElementById("bookPage").style.display="none"
-document.getElementById("finalPage").style.display="block"
-
-}
-
-})
-
-
-
-setInterval(function(){
+setInterval(()=>{
 
 const love=document.createElement("div")
 
 love.classList.add("love")
 
-love.innerText="❤"
+love.innerHTML="❤"
 
 love.style.left=Math.random()*100+"vw"
 
-love.style.animationDuration=Math.random()*3+2+"s"
+love.style.animationDuration=(Math.random()*3+2)+"s"
 
 document.body.appendChild(love)
 
 setTimeout(()=>{
+
 love.remove()
+
 },5000)
 
 },300)
 
 
 
-for(let i=0;i<50;i++){
+let startX=0
+let endX=0
 
-let sparkle=document.createElement("div")
+const book=document.getElementById("book")
 
-sparkle.classList.add("sparkle")
+const pages=document.querySelectorAll(".page")
 
-sparkle.style.left=Math.random()*100+"vw"
+let currentPage=0
 
-sparkle.style.top=Math.random()*100+"vh"
+book.addEventListener("touchstart",(e)=>{
+startX=e.changedTouches[0].screenX
+})
 
-sparkle.style.animationDelay=Math.random()*2+"s"
+book.addEventListener("touchend",(e)=>{
 
-document.body.appendChild(sparkle)
+endX=e.changedTouches[0].screenX
+
+if(startX-endX>50){
+
+nextPage()
+
+}
+
+})
+
+function nextPage(){
+
+if(currentPage<pages.length-1){
+
+pages[currentPage].classList.remove("active")
+
+currentPage++
+
+pages[currentPage].classList.add("active")
+
+}
 
 }
