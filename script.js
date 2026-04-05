@@ -21,7 +21,6 @@ countText.innerText=count
 },1000)
 
 
-
 function showText(){
 
 const page=document.getElementById("textPage")
@@ -51,9 +50,6 @@ document.getElementById("bookPage").classList.remove("hidden")
 }
 
 
-
-/* LOVE FALL */
-
 setInterval(()=>{
 
 const love=document.createElement("div")
@@ -77,8 +73,6 @@ love.remove()
 },300)
 
 
-
-/* BOOK SWIPE */
 
 let startX=0
 let endX=0
