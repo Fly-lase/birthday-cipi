@@ -1,39 +1,41 @@
-/* BOOK SWIPE */
+// Element references
+const cover = document.getElementById('cover');
+const bookContainer = document.getElementById('bookContainer');
+const book = document.getElementById('book');
+const pages = document.querySelectorAll('.page');
+const music = document.getElementById('bgMusic');
 
-let startX=0
-let endX=0
+let currentPage = 0;
 
-const book=document.getElementById("book")
-const pages=document.querySelectorAll(".page")
+// Tampilkan buku setelah 3 detik
+setTimeout(() => {
+  cover.style.display = 'none';
+  bookContainer.style.display = 'block';
+}, 3000);
 
-let currentPage=0
+// Event klik buku untuk flip halaman
+book.addEventListener('click', () => {
+  if(currentPage < pages.length - 1){
+    book.style.transform = `rotateY(${180 * (currentPage + 1)}deg)`;
+    currentPage++;
 
-book.addEventListener("touchstart",(e)=>{
-startX=e.changedTouches[0].screenX
-})
+    // Halaman terakhir: confetti muncul
+    if(currentPage === pages.length - 1){
+      createConfetti(100);
+    }
+  }
+});
 
-book.addEventListener("touchend",(e)=>{
+// Fungsi buat confetti
+function createConfetti(num){
+  for(let i=0; i<num; i++){
+    const confetti = document.createElement('div');
+    confetti.classList.add('confetti');
+    confetti.style.left = Math.random() * window.innerWidth + 'px';
+    confetti.style.backgroundColor = `hsl(${Math.random()*360},100%,50%)`;
+    confetti.style.animationDuration = (2 + Math.random()*3) + 's';
+    document.body.appendChild(confetti);
 
-endX=e.changedTouches[0].screenX
-
-if(startX-endX>50){
-
-nextPage()
-
-}
-
-})
-
-function nextPage(){
-
-if(currentPage<pages.length-1){
-
-pages[currentPage].classList.remove("active")
-
-currentPage++
-
-pages[currentPage].classList.add("active")
-
-}
-
+    setTimeout(() => confetti.remove(), 5000);
+  }
 }
