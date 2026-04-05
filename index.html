@@ -1,35 +1,46 @@
-<div id="bookPage" class="hidden">
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Cipi!</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-<div class="book-container">
+  <!-- Sampul -->
+  <div id="cover">
+    <img src="heart.png" alt="Hati Berdenyut">
+    <h1>Selamat Ulang Tahun!</h1>
+  </div>
 
-<div class="book-message">
-Selamat ulang tahun sayang ❤️
-</div>
+  <!-- Buku Flip -->
+  <div id="bookContainer">
+    <div class="book" id="book">
+      <div class="page" id="page1">
+        <h2>Happy Birthday!</h2>
+      </div>
+      <div class="page" id="page2">
+        <h2>Cipi</h2>
+        <img src="cartoon.png" alt="Cipi">
+      </div>
+      <div class="page" id="page3">
+        <img src="cartoon.png" alt="Cipi">
+        <div class="text-box">Semoga panjang umur dan sehat selalu</div>
+      </div>
+      <div class="page" id="page4">
+        <img src="cartoon.png" alt="Cipi">
+        <div class="text-box">Semoga bahagia selalu dan sukses</div>
+      </div>
+      <div class="page" id="page5">
+        <h2>🎉🎊</h2>
+      </div>
+    </div>
+  </div>
 
-<div class="book" id="book">
+  <!-- Musik -->
+  <audio id="bgMusic" src="music.mp3" autoplay></audio>
 
-<div class="page active">
-
-<div class="photo-row">
-<img src="foto1.jpg">
-<img src="foto2.jpg">
-</div>
-
-</div>
-
-<div class="page">
-
-<div class="photo-row">
-<img src="foto3.jpg">
-<img src="foto4.jpg">
-</div>
-
-</div>
-
-</div>
-
-<p class="swipe-text">Swipe ke kiri ➜</p>
-
-</div>
-
-</div>
+  <script src="script.js"></script>
+</body>
+</html>
