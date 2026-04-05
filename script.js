@@ -1,41 +1,77 @@
-// Element references
-const cover = document.getElementById('cover');
-const bookContainer = document.getElementById('bookContainer');
-const book = document.getElementById('book');
-const pages = document.querySelectorAll('.page');
-const music = document.getElementById('bgMusic');
+// AUTOPLAY MUSIC
+window.addEventListener("load", function(){
+    const music = document.getElementById("music");
 
-let currentPage = 0;
-
-// Tampilkan buku setelah 3 detik
-setTimeout(() => {
-  cover.style.display = 'none';
-  bookContainer.style.display = 'block';
-}, 3000);
-
-// Event klik buku untuk flip halaman
-book.addEventListener('click', () => {
-  if(currentPage < pages.length - 1){
-    book.style.transform = `rotateY(${180 * (currentPage + 1)}deg)`;
-    currentPage++;
-
-    // Halaman terakhir: confetti muncul
-    if(currentPage === pages.length - 1){
-      createConfetti(100);
-    }
-  }
+    // coba mainkan autoplay (muted dulu)
+    music.muted = true;
+    music.play().then(()=>{
+        music.muted = false;
+    }).catch(()=>{
+        document.addEventListener("click",()=>{ music.play(); }, {once:true});
+    });
 });
 
-// Fungsi buat confetti
-function createConfetti(num){
-  for(let i=0; i<num; i++){
-    const confetti = document.createElement('div');
-    confetti.classList.add('confetti');
-    confetti.style.left = Math.random() * window.innerWidth + 'px';
-    confetti.style.backgroundColor = `hsl(${Math.random()*360},100%,50%)`;
-    confetti.style.animationDuration = (2 + Math.random()*3) + 's';
-    document.body.appendChild(confetti);
+// COUNTDOWN
+let num = 3;
+let timer = setInterval(()=>{
+    document.getElementById("count").innerText = num;
+    num--;
+    if(num < 0){
+        clearInterval(timer);
+        document.getElementById("countPage").style.display = "none";
+        showText();
+    }
+},1000);
 
-    setTimeout(() => confetti.remove(), 5000);
-  }
+// SHOW TEXT & CARTOON
+function showText(){
+    const text = document.getElementById("birthdayText");
+    const page = document.getElementById("textPage");
+    const cartoon = document.getElementById("cartoon");
+
+    page.style.display = "flex";
+    text.innerText = "Happy Birthday";
+
+    setTimeout(()=>{ text.innerText="Cipi ❤️"; },2000);
+    setTimeout(()=>{ cartoon.classList.remove("hidden"); },3500);
+    setTimeout(()=>{
+        page.style.display="none";
+        document.getElementById("bookPage").style.display="block";
+    },6000);
+}
+
+// BOOK FLIP
+let pages = document.querySelectorAll(".page");
+let current = 0;
+
+document.addEventListener("click",function(){
+    if(current < pages.length - 1){
+        pages[current].classList.remove("active");
+        current++;
+        pages[current].classList.add("active");
+    } else {
+        document.getElementById("bookPage").style.display="none";
+        document.getElementById("finalPage").style.display="block";
+    }
+});
+
+// FALLING HEARTS
+setInterval(function(){
+    const love = document.createElement("div");
+    love.classList.add("love");
+    love.innerText="❤";
+    love.style.left = Math.random()*100+"vw";
+    love.style.animationDuration = Math.random()*3+2+"s";
+    document.body.appendChild(love);
+    setTimeout(()=>{ love.remove(); },5000);
+},300);
+
+// SPARKLES
+for(let i=0;i<50;i++){
+    const sparkle = document.createElement("div");
+    sparkle.classList.add("sparkle");
+    sparkle.style.left = Math.random()*100+"vw";
+    sparkle.style.top = Math.random()*100+"vh";
+    sparkle.style.animationDelay = Math.random()*2+"s";
+    document.body.appendChild(sparkle);
 }
