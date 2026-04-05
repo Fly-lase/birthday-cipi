@@ -13,16 +13,14 @@
 
 <body>
 
-<audio autoplay loop>
-<source src="music.mp3" type="audio/mpeg">
-</audio>
-
-
 <!-- COUNTDOWN -->
 
 <div id="countPage">
+
 <h1 id="count">3</h1>
+
 </div>
+
 
 
 <!-- TEXT PAGE -->
@@ -38,16 +36,18 @@
 </div>
 
 
-<!-- BOOK -->
+
+<!-- BOOK PAGE -->
 
 <div id="bookPage" class="hidden">
 
-<div class="book">
+<div class="book" id="book">
 
-<input type="checkbox" id="c1">
-<input type="checkbox" id="c2">
+<!-- COVER -->
 
-<div id="cover">
+<div class="page active cover">
+
+<div class="cover-content">
 
 <div class="heart">❤️</div>
 
@@ -55,61 +55,48 @@
 
 </div>
 
+</div>
 
-<div class="flip-book">
 
-<div class="flip" id="p1">
+<!-- PAGE FOTO 1 -->
 
-<div class="back">
+<div class="page">
 
 <div class="book-message">
 Selamat ulang tahun sayang ❤️
 </div>
 
 <div class="photo-row">
-
 <img src="foto1.jpg">
 <img src="foto2.jpg">
-
 </div>
 
 </div>
 
-<label class="next-btn" for="c1">></label>
 
-</div>
+<!-- PAGE FOTO 2 -->
 
-
-<div class="flip" id="p2">
-
-<div class="back">
+<div class="page">
 
 <div class="book-message">
 Semoga kita selalu bersama 💕
 </div>
 
 <div class="photo-row">
-
 <img src="foto3.jpg">
 <img src="foto4.jpg">
-
 </div>
-
-</div>
-
-<label class="next-btn" for="c2">></label>
 
 </div>
 
 
 </div>
 
-</div>
+<p class="swipe-text">Swipe ke kiri ➜</p>
 
 </div>
 
 
-<div id="confetti"></div>
 
 <script src="script.js"></script>
 
