@@ -52,47 +52,69 @@ document.getElementById("bookPage").classList.remove("hidden")
 
 
 
-/* CONFETTI */
+/* LOVE FALL */
 
-function launchConfetti(){
+setInterval(()=>{
 
-for(let i=0;i<80;i++){
+const love=document.createElement("div")
 
-const confetti=document.createElement("div")
+love.classList.add("love")
 
-confetti.classList.add("confetti-piece")
+love.innerHTML="❤"
 
-confetti.style.left=Math.random()*100+"vw"
+love.style.left=Math.random()*100+"vw"
 
-confetti.style.background=`hsl(${Math.random()*360},100%,50%)`
+love.style.animationDuration=(Math.random()*3+2)+"s"
 
-document.getElementById("confetti").appendChild(confetti)
-
-setTimeout(()=>{
-
-confetti.remove()
-
-},3000)
-
-}
-
-}
-
-
-/* DETECT LAST PAGE */
-
-const c2=document.getElementById("c2")
-
-c2.addEventListener("change",()=>{
-
-if(c2.checked){
+document.body.appendChild(love)
 
 setTimeout(()=>{
 
-launchConfetti()
+love.remove()
 
-},600)
+},5000)
+
+},300)
+
+
+
+/* BOOK SWIPE */
+
+let startX=0
+let endX=0
+
+const book=document.getElementById("book")
+
+const pages=document.querySelectorAll(".page")
+
+let currentPage=0
+
+book.addEventListener("touchstart",(e)=>{
+startX=e.changedTouches[0].screenX
+})
+
+book.addEventListener("touchend",(e)=>{
+
+endX=e.changedTouches[0].screenX
+
+if(startX-endX>50){
+
+nextPage()
 
 }
 
 })
+
+function nextPage(){
+
+if(currentPage<pages.length-1){
+
+pages[currentPage].classList.remove("active")
+
+currentPage++
+
+pages[currentPage].classList.add("active")
+
+}
+
+}
