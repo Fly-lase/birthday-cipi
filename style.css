@@ -11,8 +11,6 @@ color:white;
 display:none;
 }
 
-/* COUNTDOWN */
-
 #countPage{
 height:100vh;
 display:flex;
@@ -23,8 +21,6 @@ align-items:center;
 #count{
 font-size:120px;
 }
-
-/* TEXT PAGE */
 
 #textPage{
 height:100vh;
@@ -43,8 +39,6 @@ font-size:40px;
 margin-top:10px;
 }
 
-/* CARTOON */
-
 #cartoon{
 width:200px;
 margin-top:20px;
@@ -59,8 +53,6 @@ animation:wave 1.5s infinite;
 100%{transform:rotate(0)}
 }
 
-/* BOOK PAGE */
-
 #bookPage{
 height:100vh;
 display:flex;
@@ -69,13 +61,21 @@ justify-content:center;
 align-items:center;
 }
 
-.book{
-width:320px;
-height:240px;
-position:relative;
+.book-message{
+background:white;
+color:#ff4d6d;
+padding:15px 25px;
+border-radius:15px;
+font-size:22px;
+margin-bottom:20px;
+box-shadow:0 10px 20px rgba(0,0,0,0.2);
 }
 
-/* PAGE */
+.book{
+width:320px;
+height:220px;
+position:relative;
+}
 
 .page{
 position:absolute;
@@ -84,7 +84,6 @@ height:100%;
 background:white;
 border-radius:15px;
 display:flex;
-flex-direction:column;
 justify-content:center;
 align-items:center;
 transform:rotateY(90deg);
@@ -96,39 +95,10 @@ box-shadow:0 10px 20px rgba(0,0,0,0.3);
 transform:rotateY(0deg);
 }
 
-/* COVER */
-
-.cover{
-background:white;
-}
-
-.cover-content{
-text-align:center;
-color:#ff4d6d;
-}
-
-.heart{
-font-size:80px;
-margin-bottom:10px;
-}
-
-/* MESSAGE BOX */
-
-.book-message{
-background:white;
-color:#ff4d6d;
-padding:10px 20px;
-border-radius:12px;
-font-size:18px;
-margin-bottom:10px;
-box-shadow:0 8px 15px rgba(0,0,0,0.2);
-}
-
-/* PHOTO ROW */
-
 .photo-row{
 display:flex;
 gap:10px;
+padding:10px;
 }
 
 .photo-row img{
@@ -138,13 +108,9 @@ object-fit:cover;
 border-radius:10px;
 }
 
-/* SWIPE TEXT */
-
 .swipe-text{
-margin-top:20px;
+margin-top:15px;
 }
-
-/* LOVE FALL */
 
 .love{
 position:fixed;
