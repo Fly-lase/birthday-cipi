@@ -3,7 +3,7 @@ margin:0;
 background:#ffc0cb;
 font-family:sans-serif;
 text-align:center;
-overflow:hidden;
+overflow-x:hidden;
 color:white;
 }
 
@@ -24,7 +24,7 @@ align-items:center;
 font-size:120px;
 }
 
-/* TEXT */
+/* TEXT PAGE */
 
 #textPage{
 height:100vh;
@@ -40,7 +40,10 @@ font-size:60px;
 
 #cipiText{
 font-size:40px;
+margin-top:10px;
 }
+
+/* CARTOON */
 
 #cartoon{
 width:200px;
@@ -56,84 +59,72 @@ animation:wave 1.5s infinite;
 100%{transform:rotate(0)}
 }
 
+/* BOOK PAGE */
 
-/* BOOK */
-
-.book{
+#bookPage{
+height:100vh;
 display:flex;
+flex-direction:column;
 justify-content:center;
 align-items:center;
-height:100vh;
 }
 
-.flip-book{
-width:350px;
-height:250px;
+.book{
+width:320px;
+height:240px;
 position:relative;
-perspective:1500px;
 }
 
-.flip{
-position:absolute;
-width:100%;
-height:100%;
-transform-origin:left;
-transform-style:preserve-3d;
-transition:0.8s;
-}
+/* PAGE */
 
-.flip .back{
+.page{
 position:absolute;
 width:100%;
 height:100%;
 background:white;
-border-radius:10px;
+border-radius:15px;
 display:flex;
 flex-direction:column;
-align-items:center;
 justify-content:center;
+align-items:center;
+transform:rotateY(90deg);
+transition:0.6s;
+box-shadow:0 10px 20px rgba(0,0,0,0.3);
 }
 
-#c1:checked ~ .flip-book #p1{
-transform:rotateY(-180deg);
+.page.active{
+transform:rotateY(0deg);
 }
-
-#c2:checked ~ .flip-book #p2{
-transform:rotateY(-180deg);
-}
-
 
 /* COVER */
 
-#cover{
-position:absolute;
-width:350px;
-height:250px;
+.cover{
 background:white;
-border-radius:10px;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-z-index:10;
+}
+
+.cover-content{
+text-align:center;
+color:#ff4d6d;
 }
 
 .heart{
 font-size:80px;
-animation:beat 1s infinite;
+margin-bottom:10px;
 }
 
-@keyframes beat{
+/* MESSAGE BOX */
 
-0%{transform:scale(1)}
-
-50%{transform:scale(1.2)}
-
-100%{transform:scale(1)}
-
+.book-message{
+background:white;
+color:#ff4d6d;
+padding:10px 20px;
+border-radius:12px;
+font-size:18px;
+margin-bottom:10px;
+box-shadow:0 8px 15px rgba(0,0,0,0.2);
 }
 
-/* FOTO */
+/* PHOTO ROW */
 
 .photo-row{
 display:flex;
@@ -141,61 +132,35 @@ gap:10px;
 }
 
 .photo-row img{
-width:150px;
+width:140px;
 height:180px;
 object-fit:cover;
 border-radius:10px;
 }
 
-.book-message{
-background:white;
-color:#ff4d6d;
-padding:10px 20px;
-border-radius:10px;
-margin-bottom:10px;
-box-shadow:0 5px 10px rgba(0,0,0,0.2);
+/* SWIPE TEXT */
+
+.swipe-text{
+margin-top:20px;
 }
 
-/* BUTTON */
+/* LOVE FALL */
 
-.next-btn{
-position:absolute;
-right:10px;
-bottom:10px;
-background:#ff4d6d;
-color:white;
-padding:5px 10px;
-border-radius:5px;
-cursor:pointer;
-}
-
-/* CONFETTI */
-
-#confetti{
+.love{
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-pointer-events:none;
-}
-
-.confetti-piece{
-position:absolute;
-width:10px;
-height:10px;
-background:red;
-animation:fall 3s linear forwards;
+top:-10px;
+color:red;
+font-size:22px;
+animation:fall linear forwards;
 }
 
 @keyframes fall{
-
 0%{
 transform:translateY(-10px);
+opacity:1;
 }
-
 100%{
 transform:translateY(100vh);
+opacity:0;
 }
-
 }
