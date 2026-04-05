@@ -1,96 +1,112 @@
-/* Reset dan dasar */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body, html {
-  width: 100%;
-  height: 100%;
-  font-family: 'Arial', sans-serif;
-  background-color: #fff;
-  overflow-x: hidden;
+body{
+    margin:0;
+    background:#ffc0cb;
+    font-family:sans-serif;
+    text-align:center;
+    overflow:hidden;
+    color:white;
 }
 
-/* Sampul */
-#cover {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  text-align: center;
+.hidden{ display:none; }
+
+/* COUNTDOWN */
+#countPage{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
-#cover img {
-  width: 150px;
-  height: 150px;
-  animation: heartbeat 1s infinite;
+#count{ font-size:120px; }
+
+/* TEXT PAGE */
+#textPage{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 }
-@keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
+#birthdayText{ font-size:60px; }
+#cartoon{
+    width:200px;
+    animation:wave 1.5s infinite;
 }
-#cover h1 {
-  font-size: 3rem;
-  margin-top: 20px;
+@keyframes wave{
+    0%{transform:rotate(0)}
+    25%{transform:rotate(10deg)}
+    50%{transform:rotate(-10deg)}
+    75%{transform:rotate(10deg)}
+    100%{transform:rotate(0)}
 }
 
-/* Buku flip */
-#bookContainer {
-  perspective: 1500px;
-  width: 400px;
-  margin: 50px auto;
-  display: none; /* tersembunyi awalnya */
+/* BOOK */
+.book{
+    width:280px;
+    height:360px;
+    margin:auto;
+    position:relative;
 }
-.book {
-  width: 100%;
-  transform-style: preserve-3d;
-  transition: transform 1s;
-  cursor: pointer;
-  position: relative;
+.page{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:white;
+    color:#ff4d6d;
+    border-radius:10px;
+    padding:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    transform:rotateY(90deg);
+    transition:0.8s;
 }
-.page {
-  width: 100%;
-  height: 500px;
-  position: absolute;
-  background: #fff;
-  backface-visibility: hidden;
-  border: 2px solid #ccc;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5rem;
-}
-.page img {
-  max-width: 90%;
-  max-height: 90%;
-}
-.page:nth-child(1) { z-index:5; }
-.page:nth-child(2) { z-index:4; transform: rotateY(180deg); }
-.page:nth-child(3) { z-index:3; }
-.page:nth-child(4) { z-index:2; }
-.page:nth-child(5) { z-index:1; }
+.page.active{ transform:rotateY(0); }
+.page img{ width:100%; border-radius:10px; margin-bottom:10px; }
+.swipe{ margin-top:20px; color:white; }
 
-/* Teks di halaman 3 & 4 */
-.text-box {
-  position: absolute;
-  bottom: 20px;
-  background: rgba(255,255,255,0.8);
-  padding: 10px 15px;
-  border-radius: 8px;
+/* FINAL PAGE */
+.finalText{
+    font-family:'Dancing Script';
+    font-size:60px;
+    margin-top:60px;
+}
+.heart-gallery{
+    width:300px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+    margin-top:40px;
+}
+.heart-gallery img{
+    width:100%;
+    border-radius:10px;
+    border:3px solid white;
 }
 
-/* Confetti */
-.confetti {
-  position: fixed;
-  width: 10px;
-  height: 10px;
-  top: 0;
-  opacity: 0.8;
-  z-index: 9999;
-  animation: fall 3s linear infinite;
+/* FALLING HEARTS */
+.love{
+    position:fixed;
+    top:-10px;
+    color:red;
+    font-size:20px;
+    animation:fall linear forwards;
 }
-@keyframes fall {
-  0% { transform: translateY(-20px) rotate(0deg);}
-  100% { transform: translateY(100vh) rotate(360deg);}
+@keyframes fall{
+    0%{transform:translateY(-10px)}
+    100%{transform:translateY(100vh)}
+}
+
+/* SPARKLES */
+.sparkle{
+    position:fixed;
+    width:4px;
+    height:4px;
+    background:white;
+    border-radius:50%;
+    opacity:0.8;
+    animation:twinkle 2s infinite;
+}
+@keyframes twinkle{
+    0%{opacity:0.2}
+    50%{opacity:1}
+    100%{opacity:0.2}
 }
