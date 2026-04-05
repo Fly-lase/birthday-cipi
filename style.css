@@ -11,8 +11,6 @@ color:white;
 display:none;
 }
 
-/* COUNTDOWN */
-
 #countPage{
 height:100vh;
 display:flex;
@@ -23,8 +21,6 @@ align-items:center;
 #count{
 font-size:120px;
 }
-
-/* TEXT PAGE */
 
 #textPage{
 height:100vh;
@@ -43,8 +39,6 @@ font-size:40px;
 margin-top:10px;
 }
 
-/* CARTOON */
-
 #cartoon{
 width:200px;
 margin-top:20px;
@@ -59,8 +53,6 @@ animation:wave 1.5s infinite;
 100%{transform:rotate(0)}
 }
 
-/* BOOK PAGE */
-
 #bookPage{
 height:100vh;
 display:flex;
@@ -68,8 +60,6 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 }
-
-/* MESSAGE BOX */
 
 .book-message{
 background:white;
@@ -81,15 +71,11 @@ margin-bottom:20px;
 box-shadow:0 10px 20px rgba(0,0,0,0.2);
 }
 
-/* BOOK */
-
 .book{
 width:320px;
 height:220px;
 position:relative;
 }
-
-/* PAGE */
 
 .page{
 position:absolute;
@@ -109,8 +95,6 @@ box-shadow:0 10px 20px rgba(0,0,0,0.3);
 transform:rotateY(0deg);
 }
 
-/* PHOTO ROW */
-
 .photo-row{
 display:flex;
 gap:10px;
@@ -124,13 +108,9 @@ object-fit:cover;
 border-radius:10px;
 }
 
-/* SWIPE TEXT */
-
 .swipe-text{
 margin-top:15px;
 }
-
-/* LOVE FALL */
 
 .love{
 position:fixed;
