@@ -1,139 +1,29 @@
-<!DOCTYPE html>
-<html lang="id">
+            function createSingleFirework() {
+                const firework = document.createElement('div');
+                firework.className = 'firework';
+                firework.style.left = Math.random() * 100 + 'vw';
+                firework.style.top = Math.random() * 60 + 'vh';
+                firework.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                fireworksContainer.appendChild(firework);
+                
+                firework.animate([
+                    { transform: 'scale(0)', opacity: 1 },
+                    { transform: 'scale(15)', opacity: 0 }
+                ], {
+                    duration: 800,
+                    easing: 'ease-out'
+                });
+                
+                setTimeout(() => {
+                    firework.remove();
+                }, 800);
+            }
+            
+            // Create multiple fireworks continuously
+            setInterval(createSingleFirework, 300);
+        }
 
-<head>
-<meta charset="UTF-8">
-<title>Happy Birthday Cipi ❤️</title>
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
-</head>
-
-<body>
-
-<!-- AUDIO -->
-<audio id="music" loop>
-    <source src="music.mp3" type="audio/mpeg">
-</audio>
-
-<!-- COUNTDOWN -->
-<div id="countPage">
-    <h1 id="count">3</h1>
-</div>
-
-<!-- TEXT PAGE -->
-<div id="textPage" class="hidden">
-    <h1 id="birthdayText"></h1>
-    <img src="cartoon.png" id="cartoon" class="hidden">
-</div>
-
-<!-- BOOK PAGE -->
-<div id="bookPage" class="hidden">
-    <div class="book">
-        <div class="page active">
-            <img src="foto1.jpg">
-            <p>Terima kasih sudah hadir di hidup aku ❤️</p>
-        </div>
-        <div class="page">
-            <img src="foto2.jpg">
-            <p>Kamu adalah alasan aku tersenyum setiap hari</p>
-        </div>
-        <div class="page">
-            <img src="foto3.jpg">
-            <p>Semoga panjang umur dan sehat selalu 💖</p>
-        </div>
-        <div class="page">
-            <img src="foto4.jpg">
-            <p>Semoga semua impianmu tercapai ✨</p>
-        </div>
-        <div class="page">
-            <img src="foto5.jpg">
-            <p>Terima kasih sudah menjadi bagian hidupku ❤️</p>
-        </div>
-    </div>
-    <p class="swipe">Klik layar untuk buka halaman</p>
-</div>
-
-<!-- FINAL PAGE -->
-<div id="finalPage" class="hidden">
-    <h1 class="finalText">I Love You ❤️</h1>
-    <div class="heart-gallery">
-        <img src="foto1.jpg">
-        <img src="foto2.jpg">
-        <img src="foto3.jpg">
-        <img src="foto4.jpg">
-        <img src="foto5.jpg">
-    </div>
-</div>
-
-<script src="script.js"></script>
-</body>
-</html><!DOCTYPE html>
-<html lang="id">
-
-<head>
-<meta charset="UTF-8">
-<title>Happy Birthday Cipi ❤️</title>
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
-</head>
-
-<body>
-
-<!-- AUDIO -->
-<audio id="music" loop>
-    <source src="music.mp3" type="audio/mpeg">
-</audio>
-
-<!-- COUNTDOWN -->
-<div id="countPage">
-    <h1 id="count">3</h1>
-</div>
-
-<!-- TEXT PAGE -->
-<div id="textPage" class="hidden">
-    <h1 id="birthdayText"></h1>
-    <img src="cartoon.png" id="cartoon" class="hidden">
-</div>
-
-<!-- BOOK PAGE -->
-<div id="bookPage" class="hidden">
-    <div class="book">
-        <div class="page active">
-            <img src="foto1.jpg">
-            <p>Terima kasih sudah hadir di hidup aku ❤️</p>
-        </div>
-        <div class="page">
-            <img src="foto2.jpg">
-            <p>Kamu adalah alasan aku tersenyum setiap hari</p>
-        </div>
-        <div class="page">
-            <img src="foto3.jpg">
-            <p>Semoga panjang umur dan sehat selalu 💖</p>
-        </div>
-        <div class="page">
-            <img src="foto4.jpg">
-            <p>Semoga semua impianmu tercapai ✨</p>
-        </div>
-        <div class="page">
-            <img src="foto5.jpg">
-            <p>Terima kasih sudah menjadi bagian hidupku ❤️</p>
-        </div>
-    </div>
-    <p class="swipe">Klik layar untuk buka halaman</p>
-</div>
-
-<!-- FINAL PAGE -->
-<div id="finalPage" class="hidden">
-    <h1 class="finalText">I Love You ❤️</h1>
-    <div class="heart-gallery">
-        <img src="foto1.jpg">
-        <img src="foto2.jpg">
-        <img src="foto3.jpg">
-        <img src="foto4.jpg">
-        <img src="foto5.jpg">
-    </div>
-</div>
-
-<script src="script.js"></script>
+    </script>
 </body>
 </html>
